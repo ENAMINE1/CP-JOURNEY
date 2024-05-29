@@ -1,4 +1,6 @@
-// 27 th may
+// Date: 27-05-2024
+// Time: 11:34:30
+// Author: Shashwat Kumar
 // QUESTION LINK: https://cses.fi/problemset/task/1633
 // Rating:
 // Description: find the number of ways to achive a sum s using 6 numbers [1 - 6]
@@ -118,3 +120,4 @@ signed main()
     cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
     return 0;
 }
+// Checksum: 1ab2a118b991733e5922680105d07aa92dde68e9509824e641be3bf9ea86f3ff

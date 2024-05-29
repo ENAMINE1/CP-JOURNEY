@@ -1,11 +1,11 @@
-// Date: 27-05-2024
-// Time: 12:35:37
+// Date: 28-05-2024
+// Time: 11:48:37
 // Author: Shashwat Kumar
-// QUESTION LINK: https://cses.fi/problemset/result/9373731/
+// QUESTION LINK: https://cses.fi/problemset/task/1636
 // Rating: Medium
-// Description: min no of coins required to achive the required sum (not a subset problem)
-// Solved: YES
-// Learning: what values to return when in base case
+// Description: ordered number of ways to achive a sum of x
+// Solved: NO
+// Learning: how to take care of ordered set printing
 
 /***********************************************Pre Processor*********************************************/
 #include <bits/stdc++.h>
@@ -72,43 +72,33 @@ int bin_pow(int base, int pow)
     return ans;
 }
 
-vi coins;
-int dp[MAXV + 5];
-int total_sum;
-// return me whether the sum can be achived or not
-int rec(int sum)
-{
-    if (sum < 0)
-        return 1e9;
-    if (sum == 0)
-    {
-        return 0;
-    }
-    if (dp[sum] != -1)
-        return dp[sum];
-    int ans = INT_MAX;
-    for (int i = 0; i < coins.size(); i++)
-    {
-        ans = min(ans, 1 + rec(sum - coins[i]));
-    }
-    return dp[sum] = ans;
-}
 /*********************************************Main Function***********************************************/
+int dp[105][1000005];
 void solve()
 {
-    memset(dp, -1, sizeof(dp));
-    int n;
-    cin >> n >> total_sum;
-    coins.resize(n);
-    for (int i = 0; i < n; i++)
-        cin >> coins[i];
-    int ans = INT_MAX;
-    if (rec(total_sum) <= 1e6)
+    memset(dp, 0, sizeof(dp));
+    int n, x;
+    cin >> n >> x;
+    vi v(n);
+    for (auto &e : v)
+        cin >> e;
+    sort(v.begin(), v.end());
+    dp[0][0] = 1;
+    // dp of i,j give me the number of ways to achive sum = i using the first j coins
+    for (int j = 1; j <= n; j++)
     {
-        cout << rec(total_sum);
+        for (int sum = 0; sum <= x; sum++)
+        {
+            if (sum >= v[j - 1])
+            {
+                // this case considers that we are using v[j-1] to achive the sum = x
+                dp[j][sum] = (dp[j][sum] + dp[j][sum - v[j - 1]]) % mod;
+            }
+            // if we are not using v[j -1] then we try to achive the sum using the first j - 1 coins
+            dp[j][sum] = (dp[j][sum] + dp[j - 1][sum]) % mod;
+        }
     }
-    else
-        cout << -1;
+    cout << dp[n][x];
 }
 
 signed main()
@@ -133,4 +123,5 @@ signed main()
     cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
     return 0;
 }
-// Checksum: af6a49cfe477d7b7dd65152a9c89f7830b09de2f883145c12b85390f553c1526
+
+// Checksum: 0ed9851d88310b24cef09eb311d9e8e1f5c735c995d72703ea05ffcc4ec80749

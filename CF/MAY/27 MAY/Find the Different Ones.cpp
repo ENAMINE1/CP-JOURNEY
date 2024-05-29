@@ -1,4 +1,6 @@
-// 27 MAY
+// Date: 28-05-2024
+// Time: 11:37:11
+// Author: Shashwat Kumar
 // QUESTION LINK: https://codeforces.com/problemset/problem/1927/D
 // Rating:
 // Description:

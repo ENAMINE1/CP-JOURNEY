@@ -1,11 +1,11 @@
-// Date: 27-05-2024
-// Time: 12:35:37
+// Date: 28-05-2024
+// Time: 10:54:16
 // Author: Shashwat Kumar
-// QUESTION LINK: https://cses.fi/problemset/result/9373731/
+// QUESTION LINK: https://cses.fi/problemset/task/1635/
 // Rating: Medium
-// Description: min no of coins required to achive the required sum (not a subset problem)
+// Description: no of ways to achive a possible sum using coins
 // Solved: YES
-// Learning: what values to return when in base case
+// Learning: easy
 
 /***********************************************Pre Processor*********************************************/
 #include <bits/stdc++.h>
@@ -16,7 +16,7 @@ using namespace std;
 #else
 #define debug(...) 42
 #endif
-/*********************************************Definition*************************************************/
+
 #define endl '\n'
 #define F(type, i, s, n, step) for (type i = s; (step) > 0 ? i < (n) : i > (n); i += (step))
 #define FN(type, i, s, n, step) for (type i = s; (step) > 0 ? i <= (n) : i >= (n); i += (step))
@@ -32,9 +32,9 @@ typedef vector<vi> vvi;
 typedef vector<pii> vpii;
 typedef vector<ll> vl;
 typedef vector<vl> vvl;
-/******************************************Global Variables**********************************************/
+
+/*********************************************Definition*************************************************/
 const ll MAXM = 1e5;
-const ll MAXV = 1e6;
 int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 int mod = 1e9 + 7;
@@ -43,9 +43,10 @@ long long INFF = 1000000000000000005LL;
 double EPS = 1e-9;
 double PI = acos(-1);
 vl factors[MAXM + 5];
-/*********************************************Utility Functions******************************************/
+
 mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
+/*********************************************Utility Functions******************************************/
 void init()
 {
     for (ll i = 1; i <= MAXM; i++)
@@ -71,44 +72,28 @@ int bin_pow(int base, int pow)
     }
     return ans;
 }
-
-vi coins;
-int dp[MAXV + 5];
-int total_sum;
-// return me whether the sum can be achived or not
-int rec(int sum)
-{
-    if (sum < 0)
-        return 1e9;
-    if (sum == 0)
-    {
-        return 0;
-    }
-    if (dp[sum] != -1)
-        return dp[sum];
-    int ans = INT_MAX;
-    for (int i = 0; i < coins.size(); i++)
-    {
-        ans = min(ans, 1 + rec(sum - coins[i]));
-    }
-    return dp[sum] = ans;
-}
 /*********************************************Main Function***********************************************/
+
+int dp[1000005];
 void solve()
 {
-    memset(dp, -1, sizeof(dp));
-    int n;
-    cin >> n >> total_sum;
-    coins.resize(n);
-    for (int i = 0; i < n; i++)
-        cin >> coins[i];
-    int ans = INT_MAX;
-    if (rec(total_sum) <= 1e6)
+    int n, x;
+    cin >> n >> x;
+    vi v(n);
+    for (auto &e : v)
+        cin >> e;
+    dp[0] = 1;
+    for (int sum = 1; sum <= x; sum++)
     {
-        cout << rec(total_sum);
+        for (int i = 0; i < n; i++)
+        {
+            if (sum >= v[i])
+            {
+                dp[sum] = (dp[sum] + dp[sum - v[i]]) % mod;
+            }
+        }
     }
-    else
-        cout << -1;
+    cout << dp[x];
 }
 
 signed main()
@@ -133,4 +118,5 @@ signed main()
     cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
     return 0;
 }
-// Checksum: af6a49cfe477d7b7dd65152a9c89f7830b09de2f883145c12b85390f553c1526
+
+// Checksum: 046fc15151a6f1308caa48007dba58fe3809136a7ce81f3505cc4e76eb9d44f2

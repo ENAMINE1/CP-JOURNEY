@@ -1,4 +1,6 @@
-// 27 th MAY 2024
+// Date: 28-05-2024
+// Time: 11:36:49
+// Author: Shashwat Kumar
 // QUESTION LINK: https://codeforces.com/problemset/problem/1945/D
 // Rating:
 // Description:

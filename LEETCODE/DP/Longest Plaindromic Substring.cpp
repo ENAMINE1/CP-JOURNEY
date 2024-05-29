@@ -1,11 +1,11 @@
-// Date: 27-05-2024
-// Time: 12:35:37
+// Date: 29-05-2024
+// Time: 10:28:20
 // Author: Shashwat Kumar
-// QUESTION LINK: https://cses.fi/problemset/result/9373731/
-// Rating: Medium
-// Description: min no of coins required to achive the required sum (not a subset problem)
-// Solved: YES
-// Learning: what values to return when in base case
+// QUESTION LINK: https://leetcode.com/problems/longest-palindromic-substring/
+// Rating: Hard
+// Description: find the longest palindromic substring
+// Solved: No
+// Learning: how to iterate over substrings of a string (2nd way)
 
 /***********************************************Pre Processor*********************************************/
 #include <bits/stdc++.h>
@@ -16,7 +16,7 @@ using namespace std;
 #else
 #define debug(...) 42
 #endif
-/*********************************************Definition*************************************************/
+
 #define endl '\n'
 #define F(type, i, s, n, step) for (type i = s; (step) > 0 ? i < (n) : i > (n); i += (step))
 #define FN(type, i, s, n, step) for (type i = s; (step) > 0 ? i <= (n) : i >= (n); i += (step))
@@ -32,9 +32,9 @@ typedef vector<vi> vvi;
 typedef vector<pii> vpii;
 typedef vector<ll> vl;
 typedef vector<vl> vvl;
-/******************************************Global Variables**********************************************/
+
+/*********************************************Definition*************************************************/
 const ll MAXM = 1e5;
-const ll MAXV = 1e6;
 int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 int mod = 1e9 + 7;
@@ -43,9 +43,10 @@ long long INFF = 1000000000000000005LL;
 double EPS = 1e-9;
 double PI = acos(-1);
 vl factors[MAXM + 5];
-/*********************************************Utility Functions******************************************/
+
 mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
+/*********************************************Utility Functions******************************************/
 void init()
 {
     for (ll i = 1; i <= MAXM; i++)
@@ -71,44 +72,49 @@ int bin_pow(int base, int pow)
     }
     return ans;
 }
-
-vi coins;
-int dp[MAXV + 5];
-int total_sum;
-// return me whether the sum can be achived or not
-int rec(int sum)
-{
-    if (sum < 0)
-        return 1e9;
-    if (sum == 0)
-    {
-        return 0;
-    }
-    if (dp[sum] != -1)
-        return dp[sum];
-    int ans = INT_MAX;
-    for (int i = 0; i < coins.size(); i++)
-    {
-        ans = min(ans, 1 + rec(sum - coins[i]));
-    }
-    return dp[sum] = ans;
-}
 /*********************************************Main Function***********************************************/
+
 void solve()
 {
-    memset(dp, -1, sizeof(dp));
-    int n;
-    cin >> n >> total_sum;
-    coins.resize(n);
+    string str;
+    cin >> str;
+    int n = str.length();
+    // preprocess the string
+    string s_prime;
+    int dp[1005][1005];
+    memset(dp, 0, sizeof(dp));
+
+    vector<int> ans(2);
+    // initialisation dp[i][j] tells you whether the substring starting from i and ending at j is a substring
     for (int i = 0; i < n; i++)
-        cin >> coins[i];
-    int ans = INT_MAX;
-    if (rec(total_sum) <= 1e6)
     {
-        cout << rec(total_sum);
+        dp[i][i] = 1;
+        if (i + 1 < n)
+        {
+            if (str[i] == str[i + 1])
+            {
+                dp[i][i + 1] = 2;
+                ans = {i, i + 1};
+            }
+        }
     }
-    else
-        cout << -1;
+    // this is a genius move i iterate over all the substrings of lenth 3 then 4 and so on and if i find a palindrome then i update my ans bounds this helps me because i do need to find the bounds again after the dp array has been filled
+    for (int diff = 2; diff < n; diff++)
+    {
+        for (int i = 0; i < n - diff; i++)
+        {
+            int j = i + diff;
+            if (str[i] == str[j] && dp[i + 1][j - 1])
+            {
+                dp[i][j] = 1;
+                ans = {i, j};
+            }
+        }
+    }
+    int i = ans[0];
+    int j = ans[1];
+    // cout << i << " " << j;
+    cout << str.substr(i, j - i + 1);
 }
 
 signed main()
@@ -119,7 +125,7 @@ signed main()
     std::cout.tie(NULL);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     for (int i = 1; i <= t; i++)
     {
 #ifdef LOCAL
@@ -133,4 +139,4 @@ signed main()
     cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
     return 0;
 }
-// Checksum: af6a49cfe477d7b7dd65152a9c89f7830b09de2f883145c12b85390f553c1526
+// Checksum: 8b9938d1eb0f8bdf2603802d6deedaad952b399564d7c9cf0c24ecbc9a3bd618
