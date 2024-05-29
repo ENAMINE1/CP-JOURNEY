@@ -1,3 +1,4 @@
 main
 run.sh
 generate_checksum.py
+.vscode/
