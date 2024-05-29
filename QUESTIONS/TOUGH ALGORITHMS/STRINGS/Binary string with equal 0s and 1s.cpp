@@ -101,8 +101,7 @@ void solve()
             pre[i] = -1;
         if (i > 0)
             pre[i] += pre[i - 1];
-        ans+= freq_sum[pre[i]]++;
-
+        ans += freq_sum[pre[i]]++;
     }
     cout << ans << endl;
 }
