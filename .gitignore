@@ -1,7 +1,7 @@
 main
 run_main.sh
-generate_checksum.py
-verify_checksum.py
-.vscode/
+# generate_checksum.py
+# verify_checksum.py
+# .vscode/
 Temp/
 __pycache__/
