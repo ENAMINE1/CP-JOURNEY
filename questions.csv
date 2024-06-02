@@ -1,0 +1,14 @@
+Date,Start Time,End Time,Time Taken,Author,QUESTION LINK,Rating,Description,Solved,Learning
+01-06-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://atcoder.jp/contests/abc338/tasks/abc338_c,medium,distribute instances of object in 2 groups but need to take care of other ditributions as well,no,i thought that going through all the possible combinations of x and y is not feasable but it was
+28-05-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://codeforces.com/problemset/problem/1973/B,,,,
+28-05-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://codeforces.com/problemset/problem/1927/D,,,,
+28-05-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://cses.fi/problemset/task/1635/,Medium,no of ways to achive a possible sum using coins,YES,easy
+28-05-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://cses.fi/problemset/task/1636,Medium,ordered number of ways to achive a sum of x,NO,how to take care of ordered set printing
+27-05-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://cses.fi/problemset/task/1633,,find the number of ways to achive a sum s using 6 numbers [1 - 6],YES,easy
+27-05-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://cses.fi/problemset/result/9373731/,Medium,min no of coins required to achive the required sum (not a subset problem),YES,what values to return when in base case
+29-05-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://leetcode.com/problems/longest-palindromic-substring/,Hard,find the longest palindromic substring,No,how to iterate over substrings of a string (2nd way)
+29-05-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://leetcode.com/problems/longest-palindromic-substring/description/,Hard,find the longest palindromic substring,No,how to find the longest palindromic substing in O(N) using Manacher's algorithm
+30-05-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://www.codechef.com/problems/SUMMODE,Hard,Count the number of substrings with equal no of 0's and 1's,Obviously Not,Solving the question in O(N)
+29-05-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://leetcode.com/problems/longest-palindromic-substring/description/,Hard,find the longest palindromic substring,No,how to find the longest palindromic substing in O(N) using Manacher's algorithm
+02-06-2024,09:47:34,10:07:24,19 minutes,Shashwat Kumar,https://atcoder.jp/contests/abc356/tasks/abc356_d,Hard,find the sum of set bits in (i & m) for all i <= n,ofc not,counting the number of set bits in i-th index for all numbers <= N
+28-05-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://codeforces.com/problemset/problem/1945/D,,,,

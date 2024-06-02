@@ -18,13 +18,15 @@ execute_custom_command() {
     if [ $current_hour -ge 12 ] && [ $current_hour -lt 13 ]; then
         # Check if the custom command has already been executed today
         if [ ! -f "/tmp/custom_command_executed" ]; then
-            # Add and commit all untracked and modified files
-            git add --all
-            git commit -m "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')"
 
             # Run the monthly_update.py script
             python3 monthly_update.py
 
+            # Add and commit all untracked and modified files
+            git add --all
+            git commit -m "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')"
+            git push -u origin main
+            
             # Mark that the custom command has been executed today
             touch "/tmp/custom_command_executed"
             echo "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')."
