@@ -15,18 +15,20 @@ time_diff_in_minutes() {
 execute_custom_command() {
     # Get the current hour
     current_hour=$(date +%H)
-    if [ $current_hour -ge 12 ] && [ $current_hour -lt 13 ]; then
+    if [ $current_hour -ge 7 ] && [ $current_hour -lt  23]; then
         # Check if the custom command has already been executed today
         if [ ! -f "/tmp/custom_command_executed" ]; then
 
             # Run the monthly_update.py script
             python3 monthly_update.py
 
-            # Add and commit all untracked and modified files
+            # Add and commit all untracked and modified files except main.cpp
+
             git add --all
+            git reset main.cpp
             git commit -m "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')"
             git push -u origin main
-            
+
             # Mark that the custom command has been executed today
             touch "/tmp/custom_command_executed"
             echo "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')."
@@ -39,7 +41,7 @@ execute_custom_command() {
                 time_diff=$((current_time - modified_time))
                 # echo ${time_diff}
                 # Check if more than 24 hours have passed since the last execution
-                if [ $time_diff -ge 86400 ]; then
+                if [ $time_diff -ge 7200 ]; then
                     echo "More than 24 hours have passed since the last execution."
                     # Remove the file to allow execution again
                     rm /tmp/custom_command_executed

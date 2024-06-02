@@ -1,13 +1,13 @@
-// Date: 01-06-2024
-// Start Time: 21:38:10
-// End Time  : 12:52:49
-// Time Taken: -525 minutes
+// Date: 02-06-2024
+// Start Time: 15:58:37
+// End Time  :
+// Time Taken:
 // Author: Shashwat Kumar
-// QUESTION LINK: hi there
-// Rating: medium
-// Description: distribute instances of object in 2 groups but need to take care of other ditributions as well
-// Solved: no
-// Learning: i thought that going through all the possible combinations of x and y is not feasable but it was
+// QUESTION LINK:
+// Rating:
+// Description:
+// Solved:
+// Learning:
 
 /***********************************************Pre Processor*********************************************/
 #include <bits/stdc++.h>
@@ -20,31 +20,24 @@ using namespace std;
 #endif
 
 #define endl '\n'
-#define F(type, i, s, n, step) for (type i = s; (step) > 0 ? i < (n) : i > (n); i += (step))
-#define FN(type, i, s, n, step) for (type i = s; (step) > 0 ? i <= (n) : i >= (n); i += (step))
 #define pb push_back
 // #define int long long
 typedef long long ll;
 typedef pair<int, int> pii;
-typedef pair<ll, ll> pll;
-typedef pair<string, string> pss;
-typedef pair<char, int> pci;
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef vector<pii> vpii;
-typedef vector<ll> vl;
-typedef vector<vl> vvl;
 
 /*********************************************Definition*************************************************/
 const ll MAXM = 1e5;
 int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 int mod = 1e9 + 7;
-int INF = 1000000005;
+int INF = 1e9 + 5;
 long long INFF = 1000000000000000005LL;
 double EPS = 1e-9;
 double PI = acos(-1);
-vl factors[MAXM + 5];
+vector<long> factors[MAXM + 5];
 
 mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
@@ -80,6 +73,7 @@ void solve()
 {
     
 }
+
 signed main()
 {
     auto begin = std::chrono::high_resolution_clock::now();
@@ -88,7 +82,7 @@ signed main()
     std::cout.tie(NULL);
 
     int t = 1;
-    // cin >> t;
+    cin >> t;
     for (int i = 1; i <= t; i++)
     {
 #ifdef LOCAL

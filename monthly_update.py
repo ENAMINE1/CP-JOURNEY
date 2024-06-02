@@ -19,8 +19,21 @@ def parse_comments(lines):
     return details
 
 # Function to update CSV file with question details
+import os
+import csv
+from datetime import datetime
+
 def update_csv(details):
-    csv_file = "questions.csv"
+    # Create filename based on the current month and year
+    now = datetime.now()
+    folder_name = "HISTORY"
+    file_name = now.strftime("%Y-%m") + ".csv"
+    csv_file = os.path.join(folder_name, file_name)
+
+    # Ensure the HISTORY folder exists
+    if not os.path.exists(folder_name):
+        os.makedirs(folder_name)
+
     fieldnames = ["Date", "Start Time", "End Time", "Time Taken", "Author", "QUESTION LINK", "Rating", "Description", "Solved", "Learning"]
 
     # Check if CSV file exists
@@ -33,13 +46,14 @@ def update_csv(details):
             writer.writeheader()  # Write header only if the file is empty
         writer.writerow(details)
 
+
 # Function to get untracked .cpp files using Git and sort them by file creation time
 def get_untracked_cpp_files():
     untracked_files = subprocess.check_output(["git", "ls-files", "--modified", "--others", "--exclude-standard", ":!main.cpp", "--", "*.cpp"]).decode().splitlines()
     # Sort untracked files based on file creation time
     untracked_files.sort(key=lambda x: os.path.getctime(x))
-    for file in untracked_files:
-        creation_time = datetime.datetime.fromtimestamp(os.path.getctime(file)).strftime('%Y-%m-%d %H:%M:%S')
+    # for file in untracked_files:
+        # creation_time = datetime.datetime.fromtimestamp(os.path.getctime(file)).strftime('%Y-%m-%d %H:%M:%S')
         # print(f"{file} - Creation Time: {creation_time}")
     return untracked_files
 
