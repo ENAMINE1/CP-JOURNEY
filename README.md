@@ -4,23 +4,25 @@ This repo contains all the questions solved till date practicing for Competitive
 **This is the directory structure**
 
 ```
-.
-├── generate_checksum.py
+CP-JOURNEY
 ├── HISTORY
 │   └── 2024-06.csv
-├── input.txt
 ├── lib
 │   ├── debug.h
 │   └── math.h
-├── main.cpp
-├── monthly_update.py
-├── output.txt
+├── Python
+│   ├── generate_checksum.py
+│   ├── monthly_update.py
+│   └── verify_checksum.py
 ├── QUESTIONS
-│   ├── ....
+│   ├── .....
+│   └── .....
+├── main.cpp
+├── input.txt
+├── output.txt
 ├── README.md
 ├── run_new.sh
-├── run.sh
-└── verify_checksum.py
+└── run.sh
 ```
 
 ## Usage
