@@ -11,9 +11,44 @@ time_diff_in_minutes() {
     echo $diff_minutes
 }
 
-# Function to generate checksum using Python script
-generate_checksum() {
-    python3 generate_checksum.py main.cpp
+# Function to execute the custom command between 10 PM and 11 PM
+execute_custom_command() {
+    # Get the current hour
+    current_hour=$(date +%H)
+    if [ $current_hour -ge 12 ] && [ $current_hour -lt 13 ]; then
+        # Check if the custom command has already been executed today
+        if [ ! -f "/tmp/custom_command_executed" ]; then
+            # Add and commit all untracked and modified files
+            git add --all
+            git commit -m "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')"
+
+            # Run the monthly_update.py script
+            python3 monthly_update.py
+
+            # Mark that the custom command has been executed today
+            touch "/tmp/custom_command_executed"
+            echo "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')."
+        else
+                # Get the modification time of the file
+                modified_time=$(stat -c %Y /tmp/custom_command_executed)
+
+                # Calculate the time difference in seconds
+                current_time=$(date +%s)
+                time_diff=$((current_time - modified_time))
+                # echo ${time_diff}
+                # Check if more than 24 hours have passed since the last execution
+                if [ $time_diff -ge 86400 ]; then
+                    echo "More than 24 hours have passed since the last execution."
+                    # Remove the file to allow execution again
+                    rm /tmp/custom_command_executed
+                else
+                    echo "Less than 24 hours have passed since the last execution. Skipping."
+                    return
+                fi
+        fi
+    else
+        echo "Not between 10 PM and 11 PM. Custom command will not be executed."
+    fi
 }
 
 # Get the start time from the main.cpp file
@@ -39,8 +74,8 @@ if [ $success -eq 0 ]; then
     sed -i "s|// End Time  :.*|// End Time  : $end_time|" main.cpp
     sed -i "s|// Time Taken:.*|// Time Taken: $time_taken minutes|" main.cpp
 
-    # Generate or update the checksum
-    generate_checksum
+    # Execute the custom command between 10 PM and 11 PM
+    execute_custom_command
 else
     echo "Compilation failed!"
 fi

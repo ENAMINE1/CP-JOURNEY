@@ -1,5 +1,7 @@
 // Date: 30-05-2024
-// Time: 00:05:02
+// Start Time: 21:38:10
+// End Time  : 22:08:54
+// Time Taken: 30 minutes
 // Author: Shashwat Kumar
 // QUESTION LINK: https://www.codechef.com/problems/SUMMODE
 // Rating: Hard

@@ -1,5 +1,7 @@
 // Date: 27-05-2024
-// Time: 12:35:37
+// Start Time: 21:38:10
+// End Time  : 22:08:54
+// Time Taken: 30 minutes
 // Author: Shashwat Kumar
 // QUESTION LINK: https://cses.fi/problemset/result/9373731/
 // Rating: Medium

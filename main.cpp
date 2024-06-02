@@ -1,13 +1,13 @@
-// Date: 02-06-2024
-// Start Time: 09:47:34
-// End Time  : 10:07:24
-// Time Taken: 19 minutes
+// Date: 01-06-2024
+// Start Time: 21:38:10
+// End Time  : 12:52:49
+// Time Taken: -525 minutes
 // Author: Shashwat Kumar
-// QUESTION LINK: https://atcoder.jp/contests/abc356/tasks/abc356_d
-// Rating: Hard
-// Description: find the sum of set bits in (i & m) for all i <= n
-// Solved: ofc not
-// Learning: counting the number of set bits in i-th index for all numbers <= N
+// QUESTION LINK: hi there
+// Rating: medium
+// Description: distribute instances of object in 2 groups but need to take care of other ditributions as well
+// Solved: no
+// Learning: i thought that going through all the possible combinations of x and y is not feasable but it was
 
 /***********************************************Pre Processor*********************************************/
 #include <bits/stdc++.h>
@@ -20,24 +20,31 @@ using namespace std;
 #endif
 
 #define endl '\n'
+#define F(type, i, s, n, step) for (type i = s; (step) > 0 ? i < (n) : i > (n); i += (step))
+#define FN(type, i, s, n, step) for (type i = s; (step) > 0 ? i <= (n) : i >= (n); i += (step))
 #define pb push_back
 // #define int long long
 typedef long long ll;
 typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+typedef pair<string, string> pss;
+typedef pair<char, int> pci;
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef vector<pii> vpii;
+typedef vector<ll> vl;
+typedef vector<vl> vvl;
 
 /*********************************************Definition*************************************************/
 const ll MAXM = 1e5;
 int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 int mod = 1e9 + 7;
-int INF = 1e9 + 5;
+int INF = 1000000005;
 long long INFF = 1000000000000000005LL;
 double EPS = 1e-9;
 double PI = acos(-1);
-vector<long> factors[MAXM + 5];
+vl factors[MAXM + 5];
 
 mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
@@ -69,40 +76,10 @@ int bin_pow(int base, int pow)
 }
 /*********************************************Main Function***********************************************/
 
-// counts the number of elements <= n whose idx bit is set
-ll count(ll n, ll idx)
-{
-    ll p = (1LL << idx);
-    ll cycles = n / (2 * p);
-    ll res = cycles * p;
-    ll l = n % (2 * p);
-    if(l>= p)
-    {
-        res += (l - p + 1);
-    }
-    // debug(res,p, n,cycles,l);
-    return res;
-}
-
 void solve()
 {
-    ll n, m;
-    cin >> n >> m;
-    ll res = 0;
-    int new_mod = 998244353;
-    for (ll i = 0; i < 60; i++)
-    {
-        if (m & (1LL << i))
-        {
-            // the i-th bit of m is set
-            res += count(n, i);
-            res %= new_mod;
-        }
-
-    }
-    cout << res;
+    
 }
-
 signed main()
 {
     auto begin = std::chrono::high_resolution_clock::now();

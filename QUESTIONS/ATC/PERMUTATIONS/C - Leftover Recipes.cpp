@@ -1,13 +1,13 @@
-// Date: 28-05-2024
+// Date: 01-06-2024
 // Start Time: 21:38:10
 // End Time  : 22:08:54
 // Time Taken: 30 minutes
 // Author: Shashwat Kumar
-// QUESTION LINK: https://cses.fi/problemset/task/1636
-// Rating: Medium
-// Description: ordered number of ways to achive a sum of x
-// Solved: NO
-// Learning: how to take care of ordered set printing
+// QUESTION LINK: https://atcoder.jp/contests/abc338/tasks/abc338_c
+// Rating: medium
+// Description: distribute instances of object in 2 groups but need to take care of other ditributions as well
+// Solved: no
+// Learning: i thought that going through all the possible combinations of x and y is not feasable but it was
 
 /***********************************************Pre Processor*********************************************/
 #include <bits/stdc++.h>
@@ -18,7 +18,7 @@ using namespace std;
 #else
 #define debug(...) 42
 #endif
-/*********************************************Definition*************************************************/
+
 #define endl '\n'
 #define F(type, i, s, n, step) for (type i = s; (step) > 0 ? i < (n) : i > (n); i += (step))
 #define FN(type, i, s, n, step) for (type i = s; (step) > 0 ? i <= (n) : i >= (n); i += (step))
@@ -34,9 +34,9 @@ typedef vector<vi> vvi;
 typedef vector<pii> vpii;
 typedef vector<ll> vl;
 typedef vector<vl> vvl;
-/******************************************Global Variables**********************************************/
+
+/*********************************************Definition*************************************************/
 const ll MAXM = 1e5;
-const ll MAXV = 1e6;
 int dirx[8] = {-1, 0, 0, 1, -1, -1, 1, 1};
 int diry[8] = {0, 1, -1, 0, -1, 1, -1, 1};
 int mod = 1e9 + 7;
@@ -45,9 +45,10 @@ long long INFF = 1000000000000000005LL;
 double EPS = 1e-9;
 double PI = acos(-1);
 vl factors[MAXM + 5];
-/*********************************************Utility Functions******************************************/
+
 mt19937_64 RNG(chrono::steady_clock::now().time_since_epoch().count());
 
+/*********************************************Utility Functions******************************************/
 void init()
 {
     for (ll i = 1; i <= MAXM; i++)
@@ -73,36 +74,50 @@ int bin_pow(int base, int pow)
     }
     return ans;
 }
-
 /*********************************************Main Function***********************************************/
-int dp[105][1000005];
+
 void solve()
 {
-    memset(dp, 0, sizeof(dp));
-    int n, x;
-    cin >> n >> x;
-    vi v(n);
-    for (auto &e : v)
-        cin >> e;
-    sort(v.begin(), v.end());
-    dp[0][0] = 1;
-    // dp of i,j give me the number of ways to achive sum = i using the first j coins
-    for (int j = 1; j <= n; j++)
+    int n;
+    cin >> n;
+    vi v(n), a(n), b(n);
+    int max_q = INT_MIN;
+    for (int i = 0; i < n; i++)
     {
-        for (int sum = 0; sum <= x; sum++)
-        {
-            if (sum >= v[j - 1])
-            {
-                // this case considers that we are using v[j-1] to achive the sum = x
-                dp[j][sum] = (dp[j][sum] + dp[j][sum - v[j - 1]]) % mod;
-            }
-            // if we are not using v[j -1] then we try to achive the sum using the first j - 1 coins
-            dp[j][sum] = (dp[j][sum] + dp[j - 1][sum]) % mod;
-        }
+        cin >> v[i];
+        max_q = max(max_q, v[i]);
     }
-    cout << dp[n][x];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    for (int i = 0; i < n; i++)
+    {
+        cin >> b[i];
+    }
+    // fixing the value for x and finding a suitable value for y in the expression x*Ai + y*Bi <= Qi
+    int ans = 0;
+    for (int x = 0; x <= 1e6; x++)
+    {
+        int min_y = INT_MAX;
+        int y = INF;
+        for (int i = 0; i < n; i++)
+        {
+            // calculate the value of y
+            if (v[i] - 1LL * x * a[i] < 0)
+            {
+                y = -INF;
+            }
+            else if (b[i] > 0)
+            {
+                y = (v[i] - 1LL * x * a[i]) / b[i];
+            }
+            min_y = min(min_y, y);
+        }
+        ans = max(ans, x + min_y);
+    }
+    cout << ans;
 }
-
 signed main()
 {
     auto begin = std::chrono::high_resolution_clock::now();
@@ -125,5 +140,3 @@ signed main()
     cerr << "Time measured: " << elapsed.count() * 1e-9 << " seconds.\n";
     return 0;
 }
-
-// Checksum: 0ed9851d88310b24cef09eb311d9e8e1f5c735c995d72703ea05ffcc4ec80749

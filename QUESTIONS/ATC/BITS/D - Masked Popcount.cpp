@@ -62,7 +62,7 @@ int bin_pow(int base, int pow)
         {
             ans = 1LL * ans * base % mod;
         }
-        base = 1LL * base * base % mod;
+        base = 1LL*base * base % mod;
         pow /= 2;
     }
     return ans;
