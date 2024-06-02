@@ -1,7 +1,5 @@
 main
-main.cpp
-input.txt
-output.txt
+
 # generate_checksum.py
 # verify_checksum.py
 # .vscode/
