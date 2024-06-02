@@ -37,5 +37,5 @@ On successful compilation all you need to is
 - write the metadata about the code in the comments in the start of the file,
 - save the code in a file within the ``QUESTIONS`` folder with a desired name.
 
-Once this is done then after every 2 hours all your modified and untracked files will be pushed to remote and also all the gist for the question will be stored in a folder called  `HISTORY` in a file with the current month and year as name.
+Once this is done then after every 2 hours all your modified and untracked  C++ files will be pushed to remote and also all the gist for the question will be stored in a folder called  `HISTORY` in a file with the current month and year as name.
 

@@ -15,7 +15,7 @@ time_diff_in_minutes() {
 execute_custom_command() {
     # Get the current hour
     current_hour=$(date +%H)
-    if [ $current_hour -ge 7 ] && [ $current_hour -lt  23]; then
+    if [ $current_hour -ge 7 ] && [ $current_hour -lt 23 ]; then
         # Check if the custom command has already been executed today
         if [ ! -f "/tmp/custom_command_executed" ]; then
 
@@ -42,16 +42,16 @@ execute_custom_command() {
                 # echo ${time_diff}
                 # Check if more than 24 hours have passed since the last execution
                 if [ $time_diff -ge 7200 ]; then
-                    echo "More than 24 hours have passed since the last execution."
+                    echo "More than 2 hours have passed since the last execution."
                     # Remove the file to allow execution again
                     rm /tmp/custom_command_executed
                 else
-                    echo "Less than 24 hours have passed since the last execution. Skipping."
+                    echo "Less than 2 hours have passed since the last execution. Skipping."
                     return
                 fi
         fi
     else
-        echo "Not between 10 PM and 11 PM. Custom command will not be executed."
+        echo "Not between 7 AM and 11 PM. Custom command will not be executed."
     fi
 }
 
