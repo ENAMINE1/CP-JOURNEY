@@ -76,7 +76,7 @@ ll count(ll n, ll idx)
     ll cycles = n / (2 * p);
     ll res = cycles * p;
     ll l = n % (2 * p);
-    if(l>= p)
+    if (l >= p)
     {
         res += (l - p + 1);
     }
@@ -98,7 +98,6 @@ void solve()
             res += count(n, i);
             res %= new_mod;
         }
-
     }
     cout << res;
 }
