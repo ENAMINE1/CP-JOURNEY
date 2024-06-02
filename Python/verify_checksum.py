@@ -1,6 +1,6 @@
 import hashlib
 import sys
-from generate_checksum import generate_checksum
+from Python.generate_checksum import generate_checksum
 
 def extract_original_checksum(file_path):
     with open(file_path, "r") as f:

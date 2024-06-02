@@ -20,7 +20,7 @@ execute_custom_command() {
         if [ ! -f "/tmp/custom_command_executed" ]; then
 
             # Run the monthly_update.py script
-            python3 monthly_update.py
+            python3 ./Python/monthly_update.py
 
             # Add and commit all untracked and modified files except main.cpp
 

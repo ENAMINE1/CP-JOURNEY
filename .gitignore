@@ -6,3 +6,4 @@ run_main.sh
 Temp/
 __pycache__/
 .venv/
+.obsidian/

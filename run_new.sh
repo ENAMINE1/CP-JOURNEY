@@ -14,7 +14,7 @@ time_diff_in_minutes() {
 
 # Function to generate checksum using Python script
 generate_checksum() {
-    python3 generate_checksum.py main.cpp
+    python3 ./Python/generate_checksum.py main.cpp
 }
 
 # Get the start time from the main.cpp file
