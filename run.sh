@@ -25,7 +25,7 @@ execute_custom_command() {
             # Add and commit all untracked and modified files except main.cpp
 
             git add --all
-            git reset main.cpp
+            git reset main.cpp input.txt output.txt
             git commit -m "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')"
             git push -u origin main
 
