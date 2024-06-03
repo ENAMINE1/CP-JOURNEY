@@ -13,41 +13,35 @@ time_diff_in_minutes() {
 
 # Function to execute the custom command between 10 PM and 11 PM
 execute_custom_command() {
-    # Get the current hour
-    current_hour=$(date +%H)
-    if [ $current_hour -ge 7 ] && [ $current_hour -lt 23 ]; then
-        # Check if the custom command has already been executed today
-        if [ ! -f "/tmp/custom_command_executed" ]; then
+    # Check if the custom command has already been executed today
+    if [ ! -f "/tmp/custom_command_executed" ]; then
 
-            # Run the monthly_update.py script
-            python3 ./Python/monthly_update.py
+        # Run the monthly_update.py script
+        python3 ./Python/monthly_update.py
 
-            # Add and commit all untracked and modified files except main.cpp
-            ./commit.sh "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')"
+        # Add and commit all untracked and modified files except main.cpp
+        ./commit.sh "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')"
 
-            # Mark that the custom command has been executed today
-            touch "/tmp/custom_command_executed"
-            echo "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')."
-        else
-                # Get the modification time of the file
-                modified_time=$(stat -c %Y /tmp/custom_command_executed)
-
-                # Calculate the time difference in seconds
-                current_time=$(date +%s)
-                time_diff=$((current_time - modified_time))
-                # echo ${time_diff}
-                # Check if more than 24 hours have passed since the last execution
-                if [ $time_diff -ge 7200 ]; then
-                    echo "More than 2 hours have passed since the last execution."
-                    # Remove the file to allow execution again
-                    rm /tmp/custom_command_executed
-                else
-                    echo "Less than 2 hours have passed since the last execution. Skipping."
-                    return
-                fi
-        fi
+        # Mark that the custom command has been executed today
+        touch "/tmp/custom_command_executed"
+        echo "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')."
     else
-        echo "Not between 7 AM and 11 PM. Custom command will not be executed."
+            # Get the modification time of the file
+            modified_time=$(stat -c %Y /tmp/custom_command_executed)
+
+            # Calculate the time difference in seconds
+            current_time=$(date +%s)
+            time_diff=$((current_time - modified_time))
+            # echo ${time_diff}
+            # Check if more than 24 hours have passed since the last execution
+            if [ $time_diff -ge 7200 ]; then
+                echo "More than 2 hours have passed since the last execution."
+                # Remove the file to allow execution again
+                rm /tmp/custom_command_executed
+            else
+                echo "Less than 2 hours have passed since the last execution. Skipping."
+                return
+            fi
     fi
 }
 

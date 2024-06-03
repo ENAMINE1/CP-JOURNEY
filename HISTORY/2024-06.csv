@@ -12,3 +12,6 @@ Date,Start Time,End Time,Time Taken,Author,QUESTION LINK,Rating,Description,Solv
 29-05-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://leetcode.com/problems/longest-palindromic-substring/description/,Hard,find the longest palindromic substring,No,how to find the longest palindromic substing in O(N) using Manacher's algorithm
 02-06-2024,09:47:34,10:07:24,19 minutes,Shashwat Kumar,https://atcoder.jp/contests/abc356/tasks/abc356_d,Hard,find the sum of set bits in (i & m) for all i <= n,ofc not,counting the number of set bits in i-th index for all numbers <= N
 28-05-2024,21:38:10,22:08:54,30 minutes,Shashwat Kumar,https://codeforces.com/problemset/problem/1945/D,,,,
+03-06-2024,21:26:41,21:54:57,28 minutes,Shashwat Kumar,https://atcoder.jp/contests/dp/tasks/dp_c,Easy,Form 1,Yes,Nothing special
+03-06-2024,21:57:49,22:11:21,13 minutes,Shashwat Kumar,https://atcoder.jp/contests/dp/tasks/dp_d,Easy,Knapsack 1,Yes,Form 1
+03-06-2024,22:13:38,00:10:23,-1323 minutes,Shashwat Kumar,https://atcoder.jp/contests/dp/tasks/dp_e,Hard,same as knapsack 1 but with different constraing,No,How to modify the dp states to solve the quesiton and also how to reframe the question
