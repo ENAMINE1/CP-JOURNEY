@@ -23,11 +23,7 @@ execute_custom_command() {
             python3 ./Python/monthly_update.py
 
             # Add and commit all untracked and modified files except main.cpp
-
-            git add --all
-            git reset main.cpp input.txt output.txt
-            git commit -m "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')"
-            git push -u origin main
+            ./commit.sh "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')"
 
             # Mark that the custom command has been executed today
             touch "/tmp/custom_command_executed"
