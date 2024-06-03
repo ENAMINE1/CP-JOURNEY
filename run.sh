@@ -74,7 +74,7 @@ if [ $success -eq 0 ]; then
     sed -i "s|// End Time  :.*|// End Time  : $end_time|" main.cpp
     sed -i "s|// Time Taken:.*|// Time Taken: $time_taken minutes|" main.cpp
 
-    # Execute the custom command between 10 PM and 11 PM
+    # Execute the custom command between 7 AM and 11 PM
     execute_custom_command
 else
     echo "Compilation failed!"
