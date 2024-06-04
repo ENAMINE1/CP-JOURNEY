@@ -15,20 +15,15 @@ time_diff_in_minutes() {
 execute_custom_command() {
     # Check if the custom command has already been executed today
     if [ ! -f "/tmp/custom_command_executed" ]; then
-
         # Run the monthly_update.py script
         python3 ./Python/monthly_update.py
-
         # Add and commit all untracked and modified files except main.cpp
         ./commit.sh "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')"
-
         # Mark that the custom command has been executed today
         touch "/tmp/custom_command_executed"
-        echo "Automatic commit $(date '+%Y-%m-%d %H:%M:%S')."
     else
             # Get the modification time of the file
             modified_time=$(stat -c %Y /tmp/custom_command_executed)
-
             # Calculate the time difference in seconds
             current_time=$(date +%s)
             time_diff=$((current_time - modified_time))
@@ -47,13 +42,10 @@ execute_custom_command() {
 
 # Get the start time from the main.cpp file
 start_time=$(grep "// Start Time:" main.cpp | awk '{print $4}')
-
 # Get the current time for the end time
 end_time=$(date '+%H:%M:%S')
-
 # Calculate the time taken in minutes
 time_taken=$(time_diff_in_minutes "$start_time" "$end_time")
-
 # Compile the main.cpp file
 g++ -DLOCAL -g -fsanitize=address,undefined -o main main.cpp
 success=$?
@@ -63,16 +55,13 @@ if [ $success -eq 0 ]; then
     ./main < input.txt > output.txt
     echo
     echo "End of Program"
-
     # Replace End Time and Time Taken fields if they exist
     sed -i "s|// End Time  :.*|// End Time  : $end_time|" main.cpp
     sed -i "s|// Time Taken:.*|// Time Taken: $time_taken minutes|" main.cpp
-
     # Execute the custom command between 7 AM and 11 PM
     execute_custom_command
 else
     echo "Compilation failed!"
 fi
-
 # Clean up
 rm -rf main
