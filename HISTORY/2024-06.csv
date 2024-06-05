@@ -17,3 +17,4 @@ Date,Start Time,End Time,Time Taken,Author,QUESTION LINK,Rating,Description,Solv
 03-06-2024,22:13:38,00:10:23,-1323 minutes,Shashwat Kumar,https://atcoder.jp/contests/dp/tasks/dp_e,Hard,same as knapsack 1 but with different constraing,No,How to modify the dp states to solve the quesiton and also how to reframe the question
 04-06-2024,10:46:39,13:08:46,142 minutes,Shashwat Kumar,https://cses.fi/problemset/task/1192,Medium,find the number of components in a graph but input is a grid,No,how to transform a grid into a graph
 04-06-2024,10:46:39,11:50:29,63 minutes,Shashwat Kumar,Algozenith,Easy,find the shortest path from S to E in a grid using graph and bfs and print the path,Yes,how to transform a grid into a graph
+05-06-2024,09:26:28,09:43:36,17 minutes,Shashwat Kumar,https://cses.fi/problemset/task/1666/,Easy,Find the number of components,Yes,How to print the edges required to connect the components
