@@ -18,3 +18,5 @@ Date,Start Time,End Time,Time Taken,Author,QUESTION LINK,Rating,Description,Solv
 04-06-2024,10:46:39,13:08:46,142 minutes,Shashwat Kumar,https://cses.fi/problemset/task/1192,Medium,find the number of components in a graph but input is a grid,No,how to transform a grid into a graph
 04-06-2024,10:46:39,11:50:29,63 minutes,Shashwat Kumar,Algozenith,Easy,find the shortest path from S to E in a grid using graph and bfs and print the path,Yes,how to transform a grid into a graph
 05-06-2024,09:26:28,09:43:36,17 minutes,Shashwat Kumar,https://cses.fi/problemset/task/1666/,Easy,Find the number of components,Yes,How to print the edges required to connect the components
+05-06-2024,11:03:32,11:27:40,24 minutes,Shashwat Kumar,https://cses.fi/problemset/task/1667,Easy,Find whether 2 nodes are in the same component or not if yes find the shortes distance between them,Yes,Just a practice on bfs
+05-06-2024,11:56:49,12:07:50,11 minutes,Shashwat Kumar,https://cses.fi/problemset/task/1668,Easy,Is the graph a Bipartite graph,Yes,If the graph can be coloured with 2 cloures such that no neighbours have same colour then yes
