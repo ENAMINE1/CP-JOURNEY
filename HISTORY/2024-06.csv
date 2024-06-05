@@ -24,3 +24,4 @@ Date,Start Time,End Time,Time Taken,QUESTION LINK,Rating,Description,Solved,Lear
 05-06-2024,15:31:32,15:54:03,22 minutes,https://cses.fi/problemset/task/1193,Medium,Find the shortest distance from the start cell to end cell,Yes,How to print the path in a grid
 05-06-2024,22:13:29,22:21:18,7 minutes,Algozenith,Easy,Topological sorting using dfs,Yes,if length of topo array is not equal to number of nodes then there is a cycle in the graph
 05-06-2024,22:24:54,22:46:08,21 minutes,Algozenith,Easy,Topological sort in lexicographically smallest order,Yes,how to use BFS to do topological sort
+05-06-2024,22:47:56,00:01:04,-1366 minutes,Algozenith,Medium,Find the longest path in the graph,No,how to use TOPO and DP to solve the question and print the longest path
