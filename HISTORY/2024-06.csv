@@ -20,3 +20,5 @@ Date,Start Time,End Time,Time Taken,QUESTION LINK,Rating,Description,Solved,Lear
 05-06-2024,09:26:28,09:43:36,17 minutes,https://cses.fi/problemset/task/1666/,Easy,Find the number of components,Yes,How to print the edges required to connect the components
 05-06-2024,11:03:32,11:27:40,24 minutes,https://cses.fi/problemset/task/1667,Easy,Find whether 2 nodes are in the same component or not if yes find the shortes distance between them,Yes,Just a practice on bfs
 05-06-2024,11:56:49,12:07:50,11 minutes,https://cses.fi/problemset/task/1668,Easy,Is the graph a Bipartite graph,Yes,If the graph can be coloured with 2 cloures such that no neighbours have same colour then yes
+05-06-2024,12:45:34,15:27:44,162 minutes,https://cses.fi/problemset/task/1194/,Difficult,Can you get out of the grid whithout getting caught by any monster,Yes,"Multisource BFS and also how to print the path, here I had to use BSF twice"
+05-06-2024,15:31:32,15:54:03,22 minutes,https://cses.fi/problemset/task/1193,Medium,Find the shortest distance from the start cell to end cell,Yes,How to print the path in a grid
