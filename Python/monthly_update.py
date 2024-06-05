@@ -10,7 +10,7 @@ def parse_comments(lines):
         line = line.strip()
         if line.startswith("//"):
             # Check if the line is not a checksum line
-            if not line.startswith("// Checksum:"):
+            if not (line.startswith("// Checksum:") or line.startswith("// Author:")):
                 key_value = line[2:].strip().split(':', 1)
                 if len(key_value) == 2:
                     key = key_value[0].strip()
@@ -34,7 +34,7 @@ def update_csv(details):
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
 
-    fieldnames = ["Date", "Start Time", "End Time", "Time Taken", "Author", "QUESTION LINK", "Rating", "Description", "Solved", "Learning"]
+    fieldnames = ["Date", "Start Time", "End Time", "Time Taken", "QUESTION LINK", "Rating", "Description", "Solved", "Learning"]
 
     # Check if CSV file exists
     is_empty = not os.path.exists(csv_file) or os.stat(csv_file).st_size == 0
