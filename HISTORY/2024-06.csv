@@ -26,3 +26,5 @@ Date,Start Time,End Time,Time Taken,QUESTION LINK,Rating,Description,Solved,Lear
 05-06-2024,22:24:54,22:46:08,21 minutes,Algozenith,Easy,Topological sort in lexicographically smallest order,Yes,how to use BFS to do topological sort
 05-06-2024,22:47:56,00:01:04,-1366 minutes,Algozenith,Medium,Find the longest path in the graph,No,how to use TOPO and DP to solve the question and print the longest path
 06-06-2024,12:32:10,13:55:57,83 minutes,Algozenith,Medium,Find the diameter of a tree (length of the longest path) and print the daimeter,Yes,using 2dfs to find the extreme nodes in a tree
+06-06-2024,21:50:33,23:33:13,102 minutes,Algozenith,Easy,count the subtree size of each node and also the centroids for a tree,Yes,how to count subtree size
+07-06-2024,00:14:42,00:27:40,12 minutes,Algozenith,Easy,"find the sum of all paths in a tree basically summation of dist(a,b) for all a,b belongs to V",Yes,how to use contribution of each edge in the sum
