@@ -25,3 +25,4 @@ Date,Start Time,End Time,Time Taken,QUESTION LINK,Rating,Description,Solved,Lear
 05-06-2024,22:13:29,22:21:18,7 minutes,Algozenith,Easy,Topological sorting using dfs,Yes,if length of topo array is not equal to number of nodes then there is a cycle in the graph
 05-06-2024,22:24:54,22:46:08,21 minutes,Algozenith,Easy,Topological sort in lexicographically smallest order,Yes,how to use BFS to do topological sort
 05-06-2024,22:47:56,00:01:04,-1366 minutes,Algozenith,Medium,Find the longest path in the graph,No,how to use TOPO and DP to solve the question and print the longest path
+06-06-2024,12:32:10,13:55:57,83 minutes,Algozenith,Medium,Find the diameter of a tree (length of the longest path) and print the daimeter,Yes,using 2dfs to find the extreme nodes in a tree
