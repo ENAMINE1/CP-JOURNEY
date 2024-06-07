@@ -30,3 +30,4 @@ Date,Start Time,End Time,Time Taken,QUESTION LINK,Rating,Description,Solved,Lear
 07-06-2024,00:14:42,00:27:40,12 minutes,Algozenith,Easy,"find the sum of all paths in a tree basically summation of dist(a,b) for all a,b belongs to V",Yes,how to use contribution of each edge in the sum
 07-06-2024,10:01:20,,,Algozenitha,Easy,Perform 0-1 BFS in a graph,Yes,Implementing 0-1 BFS using deque
 07-06-2024,11:18:47,11:59:25,40 minutes,Algozenith,Medium,Find the shortes path in a weithted graph,Yes,Using Dijkstra's algo to solve it and the most important thing to learn is that the top element is kept at the back of the vector
+07-06-2024,15:51:58,17:22:40,90 minutes,Algozenith,Hard,remove components of size >= k till you cant find anymore and apply gravity,Yes,How to implement what you think
