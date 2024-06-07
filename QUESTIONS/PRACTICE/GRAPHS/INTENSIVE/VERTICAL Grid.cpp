@@ -78,24 +78,18 @@ int comp_size[1001]; // tells you the size of a comp with comp id as the idx and
 // replace the numbers to correct places
 void gravity()
 {
-    for (int i = 0; i <= 9; i++)
+    for (int j = 0; j < 10; j++)
     {
-        int shift_amt = 0;
-        int curr_row = n - 1;
-        while (curr_row >= 0 && table[curr_row][i] == 0)
+        int top = n - 1, bottom = n - 1;
+        while (top >= 0)
         {
-            curr_row--;
-            shift_amt++;
+            while (top >= 0 && table[top][j] == 0)
+                top--;
+            if (top >= 0)
+                table[bottom--][j] = table[top--][j];
         }
-        // debug(shift_amt, i);
-        if (shift_amt > 0)
-        {
-            for (int row = curr_row; row >= 0; row--)
-            {
-                table[row + shift_amt][i] = table[row][i];
-                table[row][i] = 0;
-            }
-        }
+        while (bottom >= 0)
+            table[bottom--][j] = 0;
     }
 }
 
