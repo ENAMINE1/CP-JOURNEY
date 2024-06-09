@@ -32,3 +32,4 @@ Date,Start Time,End Time,Time Taken,QUESTION LINK,Rating,Description,Solved,Lear
 07-06-2024,11:18:47,11:59:25,40 minutes,Algozenith,Medium,Find the shortes path in a weithted graph,Yes,Using Dijkstra's algo to solve it and the most important thing to learn is that the top element is kept at the back of the vector
 07-06-2024,15:51:58,17:22:40,90 minutes,Algozenith,Hard,remove components of size >= k till you cant find anymore and apply gravity,Yes,How to implement what you think
 09-06-2024,11:05:29,11:40:29,35 minutes,https://leetcode.com/problems/longest-unequal-adjacent-groups-subsequence-i/description/,Medium,Find the longest alternating subsequence and print it,Yes,Keeping a parent array pointing to the parent of an element
+09-06-2024,13:14:52,13:53:29,38 minutes,https://leetcode.com/problems/median-of-two-sorted-arrays/description/,Hard,Find the median of 2 sorted arrays,No,Binary search is a great tool
