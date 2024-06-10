@@ -5,17 +5,19 @@ import datetime
 
 # Function to parse comment lines and extract question details
 def parse_comments(lines):
+    fieldnames = ["Date", "Start Time", "End Time", "Time Taken", "QUESTION LINK", "Rating", "Description", "Solved", "Learning"]
     details = {}
     for line in lines:
         line = line.strip()
         if line.startswith("//"):
-            # Check if the line is not a checksum line
-            if not (line.startswith("// Checksum:") or line.startswith("// Author:")):
+            # Ensure the line contains a colon
+            if ':' in line[2:]:
                 key_value = line[2:].strip().split(':', 1)
                 if len(key_value) == 2:
                     key = key_value[0].strip()
-                    value = key_value[1].strip()
-                    details[key] = value
+                    if key in fieldnames:
+                        value = key_value[1].strip()
+                        details[key] = value
     return details
 
 # Function to update CSV file with question details
