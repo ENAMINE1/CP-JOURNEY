@@ -68,7 +68,7 @@ int bin_pow(int base, int pow)
 }
 /***************************************************Main Function**************************************************/
 
-// odd cell: those cells which have the sum of their coordintes as odd no
+// odd cell those cells which have the sum of their coordintes as odd no
 int n;
 int vis[2][2 * MAXM + 5];
 bool check(int x, int y)
