@@ -36,3 +36,4 @@ Date,Start Time,End Time,Time Taken,QUESTION LINK,Rating,Description,Solved,Lear
 09-06-2024,15:49:20,,,https://leetcode.com/problems/find-if-path-exists-in-graph/description/,Easy,find if a path exist between src and dst,Yes,How to convert edgelist to adj list
 10-06-2024,08:55:40,09:54:48,59 minutes,https://codeforces.com/problemset/problem/1948/C,1300,Find a path between 2 cells,Yes,Identify that the different nodes have different types of edges possible in the grid
 12-06-2024,16:54:37,17:22:38,28 minutes,https://cses.fi/problemset/task/1672,Easy,Find the shortest distance between ant 2 points in the graph,Yes,"Taking input for the case of minimum distance, you could be given same edges with different weigthts in input"
+12-06-2024,23:05:08,23:22:17,17 minutes,https://codeforces.com/problemset/problem/296/D,1700,Find the sum of minimum path length between each node in the graph,Yes,How to modify the floyd warshal code
