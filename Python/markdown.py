@@ -47,7 +47,7 @@ def update_markdown(details):
 
 # Function to get untracked .cpp files using Git and sort them by file creation time
 def get_untracked_cpp_files():
-    untracked_files = subprocess.check_output(["git", "ls-files",":!main.cpp", "--", "*.cpp"]).decode().splitlines()
+    untracked_files = subprocess.check_output(["git", "ls-files","--modified", "--others", "--exclude-standard", ":!main.cpp", "--", "*.cpp"]).decode().splitlines()
     # Sort untracked files based on file creation time
     untracked_files.sort(key=lambda x: os.path.getctime(x))
     return untracked_files

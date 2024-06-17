@@ -2,6 +2,7 @@ import os
 import csv
 import subprocess
 from datetime import datetime
+from urllib.parse import quote
 
 # Function to parse comment lines and extract question details
 def parse_comments(lines):
@@ -42,11 +43,25 @@ def update_csv(details):
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         if is_empty:
             writer.writeheader()  # Write header only if the file is empty
-        writer.writerow(details)
+
+        # Ensure Code Link is formatted with encoded path
+        if details.get("Code Link"):
+            writer.writerow({
+                "Date": details.get("Date", ""),
+                "Start Time": details.get("Start Time", ""),
+                "End Time": details.get("End Time", ""),
+                "Time Taken": details.get("Time Taken", ""),
+                "QUESTION LINK": details.get("QUESTION LINK", ""),
+                "Code Link": details["Code Link"],  # Already in Markdown format
+                "Rating": details.get("Rating", ""),
+                "Description": details.get("Description", ""),
+                "Solved": details.get("Solved", ""),
+                "Learning": details.get("Learning", "")
+            })
 
 # Function to get untracked .cpp files using Git and sort them by file creation time
 def get_untracked_cpp_files():
-    untracked_files = subprocess.check_output(["git", "ls-files", ":!main.cpp", "--", "*.cpp"]).decode().splitlines()
+    untracked_files = subprocess.check_output(["git", "ls-files", "--modified", "--others", "--exclude-standard", ":!main.cpp", "--", "*.cpp"]).decode().splitlines()
     # Sort untracked files based on file creation time
     untracked_files.sort(key=lambda x: os.path.getctime(x))
     return untracked_files
@@ -55,7 +70,8 @@ def get_untracked_cpp_files():
 def generate_github_link(file_path):
     base_url = "https://github.com/ENAMINE1/CP-JOURNEY/tree/main/"
     relative_path = os.path.relpath(file_path)
-    github_link = base_url + relative_path.replace("\\", "/")
+    encoded_path = quote(relative_path.replace("\\", "/"))
+    github_link = f"[{os.path.basename(file_path)}]({base_url}{encoded_path})"
     return github_link
 
 # Main function to update CSV with untracked .cpp files
@@ -67,9 +83,7 @@ def main():
                 lines = f.readlines()
                 details = parse_comments(lines)
                 if details.get("QUESTION LINK"):
-                    alias = os.path.basename(file)  # Use just the file name as the alias
-                    full_link = generate_github_link(file)
-                    details["Code Link"] = f"[{alias}]({full_link})"  # Use Markdown format
+                    details["Code Link"] = generate_github_link(file)
                     update_csv(details)
                     print(f"Added details for {file} to CSV.")
     else:
