@@ -1,11 +1,11 @@
 import os
 import csv
 import subprocess
-import datetime
+from datetime import datetime
 
 # Function to parse comment lines and extract question details
 def parse_comments(lines):
-    fieldnames = ["Date", "Start Time", "End Time", "Time Taken", "QUESTION LINK", "Rating", "Description", "Solved", "Learning"]
+    fieldnames = ["Date", "Start Time", "End Time", "Time Taken", "QUESTION LINK", "Code Link", "Rating", "Description", "Solved", "Learning"]
     details = {}
     for line in lines:
         line = line.strip()
@@ -21,10 +21,6 @@ def parse_comments(lines):
     return details
 
 # Function to update CSV file with question details
-import os
-import csv
-from datetime import datetime
-
 def update_csv(details):
     # Create filename based on the current month and year
     now = datetime.now()
@@ -36,7 +32,7 @@ def update_csv(details):
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
 
-    fieldnames = ["Date", "Start Time", "End Time", "Time Taken", "QUESTION LINK", "Rating", "Description", "Solved", "Learning"]
+    fieldnames = ["Date", "Start Time", "End Time", "Time Taken", "QUESTION LINK", "Code Link", "Rating", "Description", "Solved", "Learning"]
 
     # Check if CSV file exists
     is_empty = not os.path.exists(csv_file) or os.stat(csv_file).st_size == 0
@@ -48,16 +44,19 @@ def update_csv(details):
             writer.writeheader()  # Write header only if the file is empty
         writer.writerow(details)
 
-
 # Function to get untracked .cpp files using Git and sort them by file creation time
 def get_untracked_cpp_files():
-    untracked_files = subprocess.check_output(["git", "ls-files", "--modified", "--others", "--exclude-standard", ":!main.cpp", "--", "*.cpp"]).decode().splitlines()
+    untracked_files = subprocess.check_output(["git", "ls-files", ":!main.cpp", "--", "*.cpp"]).decode().splitlines()
     # Sort untracked files based on file creation time
     untracked_files.sort(key=lambda x: os.path.getctime(x))
-    # for file in untracked_files:
-        # creation_time = datetime.datetime.fromtimestamp(os.path.getctime(file)).strftime('%Y-%m-%d %H:%M:%S')
-        # print(f"{file} - Creation Time: {creation_time}")
     return untracked_files
+
+# Function to generate GitHub link for a given file path
+def generate_github_link(file_path):
+    base_url = "https://github.com/ENAMINE1/CP-JOURNEY/tree/main/"
+    relative_path = os.path.relpath(file_path)
+    github_link = base_url + relative_path.replace("\\", "/")
+    return github_link
 
 # Main function to update CSV with untracked .cpp files
 def main():
@@ -68,6 +67,9 @@ def main():
                 lines = f.readlines()
                 details = parse_comments(lines)
                 if details.get("QUESTION LINK"):
+                    alias = os.path.basename(file)  # Use just the file name as the alias
+                    full_link = generate_github_link(file)
+                    details["Code Link"] = f"[{alias}]({full_link})"  # Use Markdown format
                     update_csv(details)
                     print(f"Added details for {file} to CSV.")
     else:
