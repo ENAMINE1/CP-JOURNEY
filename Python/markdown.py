@@ -1,6 +1,7 @@
 import os
 import subprocess
 from datetime import datetime
+from urllib.parse import quote
 
 # Function to parse comment lines and extract question details
 def parse_comments(lines):
@@ -55,7 +56,8 @@ def get_untracked_cpp_files():
 def generate_github_link(file_path):
     base_url = "https://github.com/ENAMINE1/CP-JOURNEY/tree/main/"
     relative_path = os.path.relpath(file_path)
-    github_link = base_url + relative_path.replace("\\", "/")
+    encoded_path = quote(relative_path.replace("\\", "/"))
+    github_link = base_url + encoded_path
     return github_link
 
 # Main function to update Markdown with untracked .cpp files
