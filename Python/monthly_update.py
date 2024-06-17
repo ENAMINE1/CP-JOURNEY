@@ -71,7 +71,7 @@ def generate_github_link(file_path):
     base_url = "https://github.com/ENAMINE1/CP-JOURNEY/tree/main/"
     relative_path = os.path.relpath(file_path)
     encoded_path = quote(relative_path.replace("\\", "/"))
-    github_link = f"[{os.path.basename(file_path)}]({base_url}{encoded_path})"
+    github_link = f"{base_url}{encoded_path}"
     return github_link
 
 # Main function to update CSV with untracked .cpp files
