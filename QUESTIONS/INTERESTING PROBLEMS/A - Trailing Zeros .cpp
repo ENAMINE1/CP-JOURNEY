@@ -54,7 +54,7 @@ Suppose \( A_{i-1} = 5 \) and \( T_i = 2 \):
 
 2. **Increment and Multiply**:
    - Increment: \( 1 + 1 = 2 \).
-   - Multiply: \( 2 \cdot 4 = 8 \).
+   - Multiply: \( 2 \cdot 4 = 8 \) .
 
 3. **Check \( \text{ctz}(8) \)**:
    - \( 8 \) in binary is \( 1000 \), which has \( \text{ctz}(8) = 3 \). Since this is not the required \( T_i = 2 \), we increment by \( 4 \):
