@@ -5,7 +5,7 @@
 // Author: Shashwat Kumar
 // QUESTION LINK: https://atcoder.jp/contests/abc169/tasks/abc169_c
 // Rating: Medium
-// Description: How to take product of a large number with a decimal number
+// Description: How to take product of a large number with a decimal  number
 // Solved: No
 // Learning: you can take the input of decimal number in terms of its integer part and decimal part if
 
