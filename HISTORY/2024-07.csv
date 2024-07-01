@@ -1,2 +1,3 @@
 Date,Start Time,End Time,Time Taken,QUESTION LINK,Code Link,Rating,Description,Solved,Learning
 01-07-2024,13:15:34,14:42:41,87 minutes,https://codeforces.com/contest/1857/problem/G,https://github.com/ENAMINE1/CP-JOURNEY/tree/main/QUESTIONS/CF/JULY/G.%20Counting%20Graphs.cpp,2000,Find the number of graphs possible with a given MST and max edge weight,No,How to use union find with template and there is no need of merge if you use union find on a tree and you may need to tweak bin_pow according to your needs
+01-07-2024,18:17:25,19:06:40,49 minutes,https://atcoder.jp/contests/dp/tasks/dp_s,https://github.com/ENAMINE1/CP-JOURNEY/tree/main/QUESTIONS/ATC/DP/S%20-%20Digit%20Sum.cpp,Medium,find the number of integers in a range divisble by x,No,DIGIT DP
