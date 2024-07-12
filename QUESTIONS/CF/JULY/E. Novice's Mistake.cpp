@@ -15,7 +15,7 @@
 using namespace std;
 #ifdef LOCAL
 #include "./lib/debug.h"
-// #include "./lib/print.h"
+#include "./lib/print.h"
 #else
 #define debug(...) 42
 #endif
