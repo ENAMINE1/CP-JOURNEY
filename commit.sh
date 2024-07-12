@@ -7,6 +7,7 @@ if git diff --cached --quiet; then
     echo "No changes in the staging area to commit."
 else
   # Commit with a message passed as an argument
+    git pull
     git commit -m "$@"
     git push -u origin main
 fi
