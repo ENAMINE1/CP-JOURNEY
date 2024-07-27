@@ -1,0 +1,14 @@
+Case #1
+0
+Case #2
+1
+Case #3
+-1
+Case #4
+0
+Case #5
+3
+Case #6
+15
+Case #7
+55

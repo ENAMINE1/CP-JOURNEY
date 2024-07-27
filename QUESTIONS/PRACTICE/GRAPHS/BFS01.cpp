@@ -84,7 +84,7 @@ void BFS01(int sc)
         {
             if (dist[nn.first] > dist[node] + nn.second)
             {
-                dist[nn.first] > dist[node] + nn.second;
+                dist[nn.first] = dist[node] + nn.second;
                 if (nn.second == 0)
                     dq.push_front(nn.first);
                 else
