@@ -1,7 +1,7 @@
-// Date: 23-07-2024
-// Start Time: 21:06:19
-// End Time  : 22:12:51
-// Time Taken: 66 minutes
+// Date: 10-08-2024
+// Start Time: 15:30:11
+// End Time  : 12:56:50
+// Time Taken: -153 minutes
 // Author: Shashwat Kumar
 // QUESTION LINK:
 // Rating:
@@ -23,38 +23,49 @@ using namespace std;
 
 /************************************************************************************************Main Function**************************************************/
 
+int rec(int sum, vector<int> &v)
+{
+    if (sum == 0)
+        return 1;
+    int n = v.size();
+    int ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (sum - v[i] >= 0)
+            ans += rec(sum - v[i], v);
+    }
+    return ans;
+}
+
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<pair<long long, int>> v(n);
-    for (auto &x : v)
+    int n, x;
+    cin >> n >> x;
+    vector<int> v(n);
+    for (auto &i : v)
     {
-        cin >> x.first;
-        x.second = 1;
+        cin >> i;
     }
-    int cnt = 0;
-    for (int i = 1; i < n; i++)
+
+    vector<vector<int>> dp(x + 1, vector<int>(n + 1, 0));
+
+    for (int i = 1; i <= x; i++)
     {
-        // debug(v[i], i);
-        while (i < n && (log2l(v[i].first)) >= v[i-1].second *(log2l(v[i - 1].first)))
-            i++;
-        if (i < n && (log2l(v[i].first)) < v[i - 1].second * (log2l(v[i - 1].first)))
+        dp[i][n] = 0;
+    }
+    for (int i = 0; i <= n; i++)
+    {
+        dp[0][i] = 1;
+    }
+    for (int i = 1; i <= x; i++)
+    {
+        for (int j = n - 1; j >= 0; j--)
         {
-            if(v[i].first == 1)
-            {
-                cout << -1 << endl;
-                return;
-            }
-            long long y = ceil(v[i - 1].second * log2l(v[i - 1].first) / log2l(v[i].first));
-            debug(y);
-            y = 1LL << ((int)(ceil(log2l(y))));
-            v[i].second = y;
-            debug(y, v[i].first,v[i].second, v[i-1].first, v[i-1].second);
-            cnt += log2l(y);
+            if (i - v[j] >= 0)
+                dp[i][j] += dp[i - v[j]][j + 1];
         }
     }
-    cout << cnt << endl;
+    cout << dp[x][n];
 }
 
 signed main()
@@ -63,7 +74,7 @@ signed main()
     cin.tie(NULL);
 
     int t = 1;
-    cin >> t;
+    // cin >> t;
     for (int i = 1; i <= t; i++)
     {
 #ifdef LOCAL

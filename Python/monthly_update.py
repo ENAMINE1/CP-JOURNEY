@@ -64,6 +64,7 @@ def get_untracked_cpp_files():
     untracked_files = subprocess.check_output(["git", "ls-files", "--modified", "--others", "--exclude-standard", ":!main.cpp", "--", "*.cpp"]).decode().splitlines()
     # Sort untracked files based on file creation time
     untracked_files.sort(key=lambda x: os.path.getctime(x))
+    # print(f"Untracked .cpp files: {untracked_files}")
     return untracked_files
 
 # Function to generate GitHub link for a given file path
