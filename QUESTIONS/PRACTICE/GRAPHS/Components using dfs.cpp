@@ -108,7 +108,7 @@ void solve()
     vi idx(n + 1);
     for (int i = 0; i <= n; i++)
     {
-        idx[i] = i;
+        idx[i] = i; 
     }
     sort(idx.begin(), idx.end(), [&vis](int a, int b) -> bool
          { return vis[a] < vis[b]; });
