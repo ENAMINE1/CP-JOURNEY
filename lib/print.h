@@ -1,6 +1,7 @@
 #ifndef PRINT_H
 #define PRINT_H
 
+
 template <typename T>
 bool chmax(T &m, const T q);
 template <typename T>
